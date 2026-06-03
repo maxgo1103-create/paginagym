@@ -5,6 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Santuario de las Bestias - Rutina</title>
     
+    <!-- Configuración PWA para agregar a pantalla principal -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="GymBros">
+    <meta name="theme-color" content="#0a0a0a">
+    
+    <!-- Iconos para la pantalla principal (PWA / Apple) -->
+    <!-- Como no podemos subir una imagen real aquí, usaré un emoji renderizado como SVG para el ícono de la app -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦍</text></svg>">
+    <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 fill=%22%23171717%22/><text x=%2250%22 y=%2250%22 font-size=%2260%22 text-anchor=%22middle%22 dominant-baseline=%22central%22>🦍</text></svg>">
+    
     <!-- Tailwind CSS via CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     
@@ -26,15 +37,15 @@
 </head>
 <body class="min-h-screen bg-neutral-950 text-neutral-200 font-sans selection:bg-amber-500 selection:text-neutral-900">
 
+    <!-- Top Comedic Banner -->
+    <div class="bg-amber-500 text-neutral-950 py-2 px-4 text-center text-xs md:text-sm font-bold tracking-wide flex items-center justify-center gap-2">
+        <i data-lucide="alert-triangle" class="w-4 h-4"></i>
+        <span>PROHIBIDO HACER CURL DE BÍCEPS EN EL RACK DE SENTADILLAS</span>
+        <i data-lucide="alert-triangle" class="w-4 h-4"></i>
+    </div>
+
     <!-- Header Section -->
-    <header class="relative overflow-hidden border-b border-neutral-800 bg-neutral-900/40 backdrop-blur-md pt-16 pb-12 px-6">
-        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[300px] bg-amber-600/10 blur-[120px] rounded-full pointer-events-none"></div>
-        <div class="max-w-4xl mx-auto text-center relative z-10">
-            <div class="inline-flex items-center justify-center p-4 bg-neutral-900 border border-neutral-800 rounded-2xl mb-6 shadow-2xl">
-                <i data-lucide="biceps-flexed" class="w-10 h-10 text-amber-500"></i>
-            </div>
-            <h1 class="text-4xl md:text-5xl font-black tracking-tight text-white mb-4 uppercase">
-                Plan de Entrenamiento
+    <header class="relative overflow-hidden border-b border-neutral-800 bg-neutral-900/40 backdrop-blur-md pt-12 pb-12 px-6">
             </h1>
             <p class="text-lg md:text-xl text-neutral-400 max-w-2xl mx-auto font-light leading-relaxed">
                 Protocolo de hipertrofia oficial para <strong class="text-neutral-200">Max, Rangel e Ian</strong>. <br class="hidden md:block" />

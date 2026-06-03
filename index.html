@@ -1,179 +1,254 @@
-import React, { useState } from 'react';
-import { Dumbbell, Activity, Flame, Wind, ShieldAlert, Trophy, BicepsFlexed, Zap, Feather } from 'lucide-react';
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Santuario de las Bestias - Rutina</title>
+    
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons via CDN -->
+    <script src="https://unpkg.com/lucide@latest"></script>
 
-export default function App() {
-  const [view, setView] = useState('maquinas'); // 'maquinas' or 'aldo'
+    <!-- Configuración personalizada de Tailwind si es necesaria -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="min-h-screen bg-neutral-950 text-neutral-200 font-sans selection:bg-amber-500 selection:text-neutral-900">
 
-  const routines = {
-    maquinas: [
-      { 
-        day: 'Lunes', 
-        focus: 'Pecho, Hombro y Tríceps', 
-        icon: <Zap className="w-6 h-6 text-amber-500" />, 
-        desc: 'Iniciando la semana con todo. Empujes pesados y controlados. Prohibido saltarse las series de aproximación.' 
-      },
-      { 
-        day: 'Martes', 
-        focus: 'Espalda, Bíceps y Antebrazo', 
-        icon: <Activity className="w-6 h-6 text-amber-500" />, 
-        desc: 'Día de jalar pesado. Enfocados en la contracción, la técnica y en sacar esa amplitud de espalda.' 
-      },
-      { 
-        day: 'Miércoles', 
-        focus: 'Pierna y Abdomen', 
-        icon: <Flame className="w-6 h-6 text-amber-500" />, 
-        desc: 'Día de pierna. Hoy NO se toca el bícep, pura sentadilla y prensa para no tener piernas de pollo. A darle.' 
-      },
-      { 
-        day: 'Jueves', 
-        focus: 'Pecho, Hombro y Tríceps', 
-        icon: <Dumbbell className="w-6 h-6 text-amber-500" />, 
-        desc: 'Segunda vuelta de empujes. Aprovechando para mejorar las marcas del lunes. Buen pump asegurado.' 
-      },
-      { 
-        day: 'Viernes', 
-        focus: 'Espalda, Bíceps y Antebrazo', 
-        icon: <BicepsFlexed className="w-6 h-6 text-amber-500" />, 
-        desc: 'Último jalón de la semana. Cerramos fuerte para irnos a descansar con el deber cumplido.' 
-      }
-    ],
-    aldo: [
-      { 
-        day: 'Lunes', 
-        focus: 'Pecho, Hombro y Tríceps', 
-        icon: <Feather className="w-6 h-6 text-blue-400" />, 
-        desc: 'Intentando seguirle el ritmo a las máquinas. Cuidado con que el pequeño mortal no se quede atrapado bajo la barra de 20kg.' 
-      },
-      { 
-        day: 'Martes', 
-        focus: 'Espalda, Bíceps y Antebrazo', 
-        icon: <Activity className="w-6 h-6 text-blue-400" />, 
-        desc: 'Trabajando el chasis para ganar un poco de masa y no salir volando con las corrientes de aire del gimnasio.' 
-      },
-      { 
-        day: 'Miércoles', 
-        focus: 'Abdomen y Bíceps (CERO Pierna)', 
-        icon: <Wind className="w-6 h-6 text-blue-400" />, 
-        desc: 'Día de aerodinámica pura. Como "le duele algo", hoy Aldo esquiva la sentadilla. Puros cuadritos y conejos para la foto.' 
-      },
-      { 
-        day: 'Jueves', 
-        focus: 'Pecho, Hombro, Tríceps + PIERNA', 
-        icon: <ShieldAlert className="w-6 h-6 text-red-500 animate-pulse" />, 
-        desc: 'LLEGÓ LA FACTURA. Rutina de empuje + el castigo de pierna del miércoles. Que alguien le traiga una ambulancia al aerodinámico.' 
-      },
-      { 
-        day: 'Viernes', 
-        focus: 'Espalda, Bíceps y Antebrazo', 
-        icon: <Trophy className="w-6 h-6 text-blue-400" />, 
-        desc: 'Si sobrevivió a la pierna del jueves, hoy termina la semana levantando sus fieles mancuernas de 5 libritas.' 
-      }
-    ]
-  };
-
-  const activeRoutine = routines[view];
-
-  return (
-    <div className="min-h-screen bg-neutral-950 text-neutral-200 font-sans selection:bg-amber-500 selection:text-neutral-900">
-      
-      {/* Header Section */}
-      <header className="relative overflow-hidden border-b border-neutral-800 bg-neutral-900/40 backdrop-blur-md pt-16 pb-12 px-6">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[300px] bg-amber-600/10 blur-[120px] rounded-full pointer-events-none"></div>
-        <div className="max-w-4xl mx-auto text-center relative z-10">
-          <div className="inline-flex items-center justify-center p-4 bg-neutral-900 border border-neutral-800 rounded-2xl mb-6 shadow-2xl">
-            <BicepsFlexed className="w-10 h-10 text-amber-500" />
-          </div>
-          <h1 className="text-4xl md:text-5xl font-black tracking-tight text-white mb-4 uppercase">
-            Plan de Entrenamiento
-          </h1>
-          <p className="text-lg md:text-xl text-neutral-400 max-w-2xl mx-auto font-light leading-relaxed">
-            Protocolo de hipertrofia oficial para <strong className="text-neutral-200">Max, Rangel e Ian</strong>. <br className="hidden md:block" />
-            <span className="text-sm opacity-80">(Incluye plan adaptado para <span className="italic text-blue-400">Aldo Aerodinámico</span>).</span>
-          </p>
-        </div>
-      </header>
-
-      {/* Main Content */}
-      <main className="max-w-4xl mx-auto px-6 py-12">
-        
-        {/* Toggle Switch */}
-        <div className="flex flex-col items-center mb-12">
-          <p className="text-xs text-neutral-500 uppercase tracking-[0.2em] mb-4 font-bold">Selecciona tu perfil</p>
-          <div className="flex p-1.5 bg-neutral-900 rounded-2xl border border-neutral-800 shadow-inner overflow-x-auto max-w-full">
-            <button
-              onClick={() => setView('maquinas')}
-              className={`relative px-6 md:px-8 py-3 rounded-xl text-sm font-bold transition-all duration-300 whitespace-nowrap ${
-                view === 'maquinas' 
-                  ? 'bg-neutral-800 text-amber-500 shadow-lg border border-neutral-700' 
-                  : 'text-neutral-400 hover:text-white hover:bg-neutral-800/50'
-              }`}
-            >
-              Las Máquinas (Max, Rangel, Ian)
-            </button>
-            <button
-              onClick={() => setView('aldo')}
-              className={`relative px-6 md:px-8 py-3 rounded-xl text-sm font-bold transition-all duration-300 flex items-center gap-2 whitespace-nowrap ${
-                view === 'aldo' 
-                  ? 'bg-blue-900/40 text-blue-400 shadow-lg border border-blue-800/50' 
-                  : 'text-neutral-400 hover:text-white hover:bg-neutral-800/50'
-              }`}
-            >
-              El Pequeño Aldo <Wind className="w-4 h-4" />
-            </button>
-          </div>
-        </div>
-
-        {/* Routine Cards */}
-        <div className="space-y-4">
-          {activeRoutine.map((day, index) => (
-            <div 
-              key={index}
-              className={`group relative flex flex-col md:flex-row items-start md:items-center p-6 rounded-2xl border transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl ${
-                view === 'aldo' && day.day === 'Jueves' 
-                  ? 'bg-red-950/20 border-red-900/50 hover:bg-red-900/30' 
-                  : view === 'aldo' && day.day === 'Miércoles'
-                  ? 'bg-blue-950/10 border-blue-900/30 hover:bg-blue-900/20'
-                  : 'bg-neutral-900/40 border-neutral-800 hover:bg-neutral-800/80 hover:border-neutral-700'
-              }`}
-            >
-              {/* Left Day Indicator */}
-              <div className="flex items-center space-x-4 md:w-1/4 mb-4 md:mb-0">
-                <div className={`p-3 border rounded-xl shadow-inner ${
-                   view === 'aldo' && day.day === 'Jueves' ? 'bg-red-950 border-red-800' :
-                   view === 'aldo' ? 'bg-neutral-950 border-neutral-800' :
-                   'bg-neutral-950 border-neutral-800'
-                }`}>
-                  {day.icon}
-                </div>
-                <h2 className="text-xl font-bold text-white tracking-wide">{day.day}</h2>
-              </div>
-
-              {/* Focus Area */}
-              <div className="md:w-1/3 mb-2 md:mb-0">
-                <p className={`font-bold text-lg ${
-                  view === 'aldo' && day.day === 'Jueves' ? 'text-red-400' : 
-                  view === 'aldo' ? 'text-blue-300' :
-                  'text-amber-500'
-                }`}>
-                  {day.focus}
-                </p>
-              </div>
-
-              {/* Description */}
-              <div className="md:w-5/12 flex items-start text-neutral-400 group-hover:text-neutral-300 transition-colors">
-                <p className="text-sm leading-relaxed font-light">{day.desc}</p>
-              </div>
+    <!-- Header Section -->
+    <header class="relative overflow-hidden border-b border-neutral-800 bg-neutral-900/40 backdrop-blur-md pt-16 pb-12 px-6">
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[300px] bg-amber-600/10 blur-[120px] rounded-full pointer-events-none"></div>
+        <div class="max-w-4xl mx-auto text-center relative z-10">
+            <div class="inline-flex items-center justify-center p-4 bg-neutral-900 border border-neutral-800 rounded-2xl mb-6 shadow-2xl">
+                <i data-lucide="biceps-flexed" class="w-10 h-10 text-amber-500"></i>
             </div>
-          ))}
+            <h1 class="text-4xl md:text-5xl font-black tracking-tight text-white mb-4 uppercase">
+                Plan de Entrenamiento
+            </h1>
+            <p class="text-lg md:text-xl text-neutral-400 max-w-2xl mx-auto font-light leading-relaxed">
+                Protocolo de hipertrofia oficial para <strong class="text-neutral-200">Max, Rangel e Ian</strong>. <br class="hidden md:block" />
+                <span class="text-sm opacity-80">(Incluye plan adaptado para <span class="italic text-blue-400">Aldo Aerodinámico</span>).</span>
+            </p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-4xl mx-auto px-6 py-12">
+        
+        <!-- Toggle Switch -->
+        <div class="flex flex-col items-center mb-12">
+            <p class="text-xs text-neutral-500 uppercase tracking-[0.2em] mb-4 font-bold">Selecciona tu perfil</p>
+            <div class="flex p-1.5 bg-neutral-900 rounded-2xl border border-neutral-800 shadow-inner overflow-x-auto max-w-full">
+                <button
+                    id="btn-maquinas"
+                    onclick="setView('maquinas')"
+                    class="relative px-6 md:px-8 py-3 rounded-xl text-sm font-bold transition-all duration-300 whitespace-nowrap bg-neutral-800 text-amber-500 shadow-lg border border-neutral-700">
+                    Las Máquinas (Max, Rangel, Ian)
+                </button>
+                <button
+                    id="btn-aldo"
+                    onclick="setView('aldo')"
+                    class="relative px-6 md:px-8 py-3 rounded-xl text-sm font-bold transition-all duration-300 flex items-center gap-2 whitespace-nowrap text-neutral-400 hover:text-white hover:bg-neutral-800/50">
+                    El Pequeño Aldo <i data-lucide="wind" class="w-4 h-4"></i>
+                </button>
+            </div>
         </div>
 
-      </main>
+        <!-- Routine Cards Container -->
+        <div id="routine-container" class="space-y-4">
+            <!-- Las tarjetas se insertarán aquí por JavaScript -->
+        </div>
 
-      {/* Footer */}
-      <footer className="border-t border-neutral-900 mt-12 py-10 text-center text-neutral-600 text-sm">
-        <p className="font-bold uppercase tracking-wider mb-2">Rutina Oficial © 2024</p>
-        <p>A darle duro. <br className="md:hidden" />(Y que alguien cuide al aerodinámico).</p>
-      </footer>
-    </div>
-  );
-}
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-neutral-900 mt-12 py-10 text-center text-neutral-600 text-sm">
+        <p class="font-bold uppercase tracking-wider mb-2">Rutina Oficial &copy; 2024</p>
+        <p>A darle duro. <br class="md:hidden" />(Y que alguien cuide al aerodinámico).</p>
+    </footer>
+
+    <!-- Script de Lógica -->
+    <script>
+        // Datos de la rutina
+        const routines = {
+            maquinas: [
+                { 
+                    day: 'Lunes', 
+                    focus: 'Pecho, Hombro y Tríceps', 
+                    icon: 'zap', 
+                    iconColor: 'text-amber-500',
+                    desc: 'Iniciando la semana con todo. Empujes pesados y controlados. Prohibido saltarse las series de aproximación.' 
+                },
+                { 
+                    day: 'Martes', 
+                    focus: 'Espalda, Bíceps y Antebrazo', 
+                    icon: 'activity', 
+                    iconColor: 'text-amber-500',
+                    desc: 'Día de jalar pesado. Enfocados en la contracción, la técnica y en sacar esa amplitud de espalda.' 
+                },
+                { 
+                    day: 'Miércoles', 
+                    focus: 'Pierna y Abdomen', 
+                    icon: 'flame', 
+                    iconColor: 'text-amber-500',
+                    desc: 'Día de pierna. Hoy NO se toca el bícep, pura sentadilla y prensa para no tener piernas de pollo. A darle.' 
+                },
+                { 
+                    day: 'Jueves', 
+                    focus: 'Pecho, Hombro y Tríceps', 
+                    icon: 'dumbbell', 
+                    iconColor: 'text-amber-500',
+                    desc: 'Segunda vuelta de empujes. Aprovechando para mejorar las marcas del lunes. Buen pump asegurado.' 
+                },
+                { 
+                    day: 'Viernes', 
+                    focus: 'Espalda, Bíceps y Antebrazo', 
+                    icon: 'biceps-flexed', 
+                    iconColor: 'text-amber-500',
+                    desc: 'Último jalón de la semana. Cerramos fuerte para irnos a descansar con el deber cumplido.' 
+                }
+            ],
+            aldo: [
+                { 
+                    day: 'Lunes', 
+                    focus: 'Pecho, Hombro y Tríceps', 
+                    icon: 'feather', 
+                    iconColor: 'text-blue-400',
+                    desc: 'Intentando seguirle el ritmo a las máquinas. Cuidado con que el pequeño mortal no se quede atrapado bajo la barra de 20kg.' 
+                },
+                { 
+                    day: 'Martes', 
+                    focus: 'Espalda, Bíceps y Antebrazo', 
+                    icon: 'activity', 
+                    iconColor: 'text-blue-400',
+                    desc: 'Trabajando el chasis para ganar un poco de masa y no salir volando con las corrientes de aire del gimnasio.' 
+                },
+                { 
+                    day: 'Miércoles', 
+                    focus: 'Abdomen y Bíceps (CERO Pierna)', 
+                    icon: 'wind', 
+                    iconColor: 'text-blue-400',
+                    desc: 'Día de aerodinámica pura. Como "le duele algo", hoy Aldo esquiva la sentadilla. Puros cuadritos y conejos para la foto.' 
+                },
+                { 
+                    day: 'Jueves', 
+                    focus: 'Pecho, Hombro, Tríceps + PIERNA', 
+                    icon: 'shield-alert', 
+                    iconColor: 'text-red-500',
+                    isWarning: true,
+                    desc: 'LLEGÓ LA FACTURA. Rutina de empuje + el castigo de pierna del miércoles. Que alguien le traiga una ambulancia al aerodinámico.' 
+                },
+                { 
+                    day: 'Viernes', 
+                    focus: 'Espalda, Bíceps y Antebrazo', 
+                    icon: 'trophy', 
+                    iconColor: 'text-blue-400',
+                    desc: 'Si sobrevivió a la pierna del jueves, hoy termina la semana levantando sus fieles mancuernas de 5 libritas.' 
+                }
+            ]
+        };
+
+        // Estado actual
+        let currentView = 'maquinas';
+
+        // Función para cambiar de vista
+        function setView(view) {
+            currentView = view;
+            updateButtons();
+            renderRoutines();
+        }
+
+        // Función para actualizar los estilos de los botones
+        function updateButtons() {
+            const btnMaquinas = document.getElementById('btn-maquinas');
+            const btnAldo = document.getElementById('btn-aldo');
+
+            // Resetear clases
+            btnMaquinas.className = "relative px-6 md:px-8 py-3 rounded-xl text-sm font-bold transition-all duration-300 whitespace-nowrap flex items-center gap-2";
+            btnAldo.className = "relative px-6 md:px-8 py-3 rounded-xl text-sm font-bold transition-all duration-300 flex items-center gap-2 whitespace-nowrap";
+
+            if (currentView === 'maquinas') {
+                btnMaquinas.classList.add('bg-neutral-800', 'text-amber-500', 'shadow-lg', 'border', 'border-neutral-700');
+                btnAldo.classList.add('text-neutral-400', 'hover:text-white', 'hover:bg-neutral-800/50');
+            } else {
+                btnAldo.classList.add('bg-blue-900/40', 'text-blue-400', 'shadow-lg', 'border', 'border-blue-800/50');
+                btnMaquinas.classList.add('text-neutral-400', 'hover:text-white', 'hover:bg-neutral-800/50');
+            }
+        }
+
+        // Función para renderizar las tarjetas
+        function renderRoutines() {
+            const container = document.getElementById('routine-container');
+            const data = routines[currentView];
+            
+            container.innerHTML = ''; // Limpiar contenedor
+
+            data.forEach(day => {
+                // Determinar estilos especiales (Jueves y Miércoles de Aldo)
+                let cardClasses = 'bg-neutral-900/40 border-neutral-800 hover:bg-neutral-800/80 hover:border-neutral-700';
+                let iconContainerClasses = 'bg-neutral-950 border-neutral-800';
+                let focusClasses = currentView === 'aldo' ? 'text-blue-300' : 'text-amber-500';
+                let animationClass = '';
+
+                if (currentView === 'aldo') {
+                    if (day.day === 'Jueves') {
+                        cardClasses = 'bg-red-950/20 border-red-900/50 hover:bg-red-900/30';
+                        iconContainerClasses = 'bg-red-950 border-red-800';
+                        focusClasses = 'text-red-400';
+                        animationClass = 'animate-pulse';
+                    } else if (day.day === 'Miércoles') {
+                        cardClasses = 'bg-blue-950/10 border-blue-900/30 hover:bg-blue-900/20';
+                    }
+                }
+
+                // Construir el HTML de la tarjeta
+                const cardHTML = `
+                    <div class="group relative flex flex-col md:flex-row items-start md:items-center p-6 rounded-2xl border transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl ${cardClasses}">
+                        <!-- Left Day Indicator -->
+                        <div class="flex items-center space-x-4 md:w-1/4 mb-4 md:mb-0">
+                            <div class="p-3 border rounded-xl shadow-inner flex items-center justify-center ${iconContainerClasses}">
+                                <i data-lucide="${day.icon}" class="w-6 h-6 ${day.iconColor} ${animationClass}"></i>
+                            </div>
+                            <h2 class="text-xl font-bold text-white tracking-wide">${day.day}</h2>
+                        </div>
+
+                        <!-- Focus Area -->
+                        <div class="md:w-1/3 mb-2 md:mb-0">
+                            <p class="font-bold text-lg ${focusClasses}">
+                                ${day.focus}
+                            </p>
+                        </div>
+
+                        <!-- Description -->
+                        <div class="md:w-5/12 flex items-start text-neutral-400 group-hover:text-neutral-300 transition-colors">
+                            <p class="text-sm leading-relaxed font-light">${day.desc}</p>
+                        </div>
+                    </div>
+                `;
+                
+                container.innerHTML += cardHTML;
+            });
+
+            // Re-renderizar los iconos de Lucide en los nuevos elementos inyectados
+            lucide.createIcons();
+        }
+
+        // Inicializar la aplicación cuando el DOM esté listo
+        document.addEventListener('DOMContentLoaded', () => {
+            lucide.createIcons(); // Renderizar iconos iniciales del header
+            renderRoutines();     // Renderizar las tarjetas
+        });
+    </script>
+</body>
+</html>
